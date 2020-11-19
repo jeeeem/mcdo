@@ -1,5 +1,4 @@
 const { DataTypes, Model } = require('sequelize');
-const connection = require('../database/db');
 
 class User extends Model {}
 
@@ -22,7 +21,7 @@ User.init(
   },
   {
     connection,
-    modelName: User,
+    modelName: 'User',
   }
 );
 
