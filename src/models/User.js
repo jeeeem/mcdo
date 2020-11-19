@@ -1,4 +1,6 @@
-const { DataTypes, Model } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const bcrypt = require('bcrypt');
+const connection = require('../database/db');
 
 class User extends Model {}
 
@@ -15,45 +17,33 @@ User.init(
       unique: true,
     },
     password_hash: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
   },
   {
-    connection,
-    modelName: 'User',
+    sequelize: connection,
+    modelName: 'users',
+    timestamps: false,
   }
 );
 
-console.log(User === connection.models.User);
-/*const users = connection
-  .query('SELECT * FROM `users`', {
-    type: QueryTypes.SELECT,
-  })
-  .then((user) => {
-    console.log(user);
-  })
-  .catch((err) => {
-    console.log(err);
-  });*/
-
-/*const users = connection
-  .query('INSERT INTO `users` values (4, "test4",  123)', {
-    type: QueryTypes.INSERT,
-  })
-  .then((user) => {
-    console.log(user);
-  })
-  .catch((err) => {
-    console.log(err);
-  });*/
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-const myPlaintextPassword = 's0//P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
-
-bcrypt.hash(myPlaintextPassword, saltRounds, function (err, hash) {
-  // Store hash in your password DB.
-  console.log(hash);
+User.beforeCreate(async (user, options) => {
+  const salt = await bcrypt.genSalt();
+  user.password_hash = await bcrypt.hash(user.password_hash, salt);
 });
+
+const user = User.build({
+  id: 3,
+  username: 'test3',
+  password_hash: 'test123',
+});
+
+user
+  .save()
+  .then(() => {
+    console.log('Successfully Saved in the Database');
+  })
+  .catch((error) => {
+    console.log(error);
+  });
