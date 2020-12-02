@@ -1,0 +1,21 @@
+.container {
+  margin: auto;
+  border: 2px solid #111;
+  width: 30%;
+  margin-top: 150px; }
+
+.box {
+  height: 50vh; }
+  .box-content {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center; }
+    .box-content > h3 {
+      margin-top: 50px;
+      align-self: center; }
+
+input {
+  margin: 5px; }
+
+button {
+  margin-top: 20px; }
