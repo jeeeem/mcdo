@@ -14,7 +14,11 @@
     align-content: center;
 
     & > h3 {
-      margin-top: 50px;
+      margin-bottom: 50px;
+      align-self: center;
+    }
+
+    & > label {
       align-self: center;
     }
   }

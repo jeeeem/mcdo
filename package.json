@@ -8,12 +8,14 @@
     "start:dev": "clear && nodemon -r dotenv/config ./src/index.js",
     "compile:sass": "node-sass -w sass/main.scss ./style.css"
   },
-  "author": "",
+  "author": "Jim Angelo Beren",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
