@@ -10,6 +10,19 @@ DB_PASS
 DB_PORT
 ```
 
+### Directory Structure
+
+```
+.
+├── dist
+└── src
+    ├── database
+    └── models
+    ├── routers
+    └── views
+        └── layouts
+```
+
 ### Packages Used
 - Dependencies
   - sequelize
@@ -21,6 +34,7 @@ DB_PORT
 - DevDependencies
   - node-sass
   - nodemon
+
 
 ### Features
 - User Management
