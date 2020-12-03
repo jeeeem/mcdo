@@ -1,7 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
 const userRouter = require('./routers/user');
-const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -14,9 +14,7 @@ app.set('view engine', '.hbs')
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/users/login', async (req, res) => {
-
   res.render('login');
-
 })
 
 app.get('/users/register', async (req, res) => {

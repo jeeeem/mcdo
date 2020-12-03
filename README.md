@@ -28,13 +28,13 @@ DB_PORT
   - sequelize
   - express
   - bcrypt
+  - body-parser
   - jsonwebtoken
   - dotenv
   - express-handlebars
 - DevDependencies
   - node-sass
   - nodemon
-
 
 ### Features
 - User Management
