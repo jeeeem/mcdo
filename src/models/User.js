@@ -1,6 +1,7 @@
 const {Sequelize, DataTypes, Model} = require('sequelize');
 const bcrypt = require('bcrypt');
 const connection = require('../database/db');
+const jwt = require('jsonwebtoken')
 
 class User extends Model {
 
@@ -22,12 +23,18 @@ User.init(
     },
     username: {
       type: DataTypes.STRING(25),
-      allowNull: false,
       unique: true,
+      validate: {
+        len: [6,15]
+      }
     },
     password_hash: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      validate: {
+        len: [6,20],
+        is: ["^[a-zA-Z0-9]+$",'i'],
+
+      }
     },
 
   },
@@ -43,20 +50,5 @@ User.beforeCreate(async (user, options) => {
   user.password_hash = await bcrypt.hash(user.password_hash, salt);
 
 });
-
-/*const user = User.build({
-  id: 3,
-  username: 'test3',
-  password_hash: 'test123',
-});
-
-user
-  .save()
-  .then(() => {
-    console.log('Successfully Saved in the Database');
-  })
-  .catch((error) => {
-    console.log(error);
-  });*/
 
 module.exports = User;

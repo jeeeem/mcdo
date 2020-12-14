@@ -4,7 +4,9 @@ const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const jwt = require('jsonwebtoken')
+const cors = require('cors')
 const userRouter = require('./routers/user');
+const port = process.env.DB_PORT || 8080;
 
 const app = express();
 
@@ -26,8 +28,13 @@ app.set('view engine', 'hbs')
 app.use(express.static(publicDir));
 
 // Middlewares
+app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
+
+// Routers
+app.use(express.json());
+app.use(userRouter);
 
 // Render Views
 app.get('/', async (req, res) => {
@@ -50,8 +57,8 @@ app.get('*', async (req, res) => {
   res.render('404');
 })
 
-// Routers
-app.use(express.json());
-app.use(userRouter);
 
-module.exports = app;
+// Initialize Express Server
+app.listen(port, () => {
+  console.log('Server is up on port ' + port);
+});

@@ -1,10 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken')
+const auth = require('../middleware/auth')
 
 const router = new express.Router();
 
-router.get('/users', async (req, res) => {
+router.get('/users', auth, async (req, res) => {
 
   try {
     const user = await User.findAll();
@@ -22,6 +24,7 @@ router.post('/register', async (req, res) => {
 
     return res.redirect('/login')
 
+
   } catch (e) {
     console.log(e);
 
@@ -30,14 +33,23 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.post('/login', async (req, res) => {
-  const {username, password_hash} = req.body
-  res.setHeader("Content-Type", "application/json");
+
+router.post('/login',  async (req, res) => {
+  const { username, password_hash } = req.body
+  console.log(req.body);
+
   try {
     const user = await User.findOne({
       where: {username}
     })
     const isMatch = await bcrypt.compare(password_hash, user.password_hash)
+
+    const token = jwt.sign({username: user.username}, process.env.JWT_SECRET, {
+      expiresIn: 86400 
+    });
+
+    console.log(token);
+
     if (!user) {
       throw new Error('Unable to login')
     }
@@ -45,7 +57,9 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       throw new Error('Unable to login')
     }
+
     return res.redirect('/home')
+    //return res.json(token)
 
   } catch (error) {
     console.log(error);

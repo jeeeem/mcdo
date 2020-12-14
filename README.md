@@ -12,17 +12,21 @@ DB_PASS
 DB_PORT
 ```
 
-### Directory Structure
+### File Directory Structure
 
 ```
 .
-├── dist
+├── public
 └── src
     ├── database
+    ├── middleware
     └── models
     ├── routers
-    └── views
+    ├── sass
+    └── templates
         └── layouts
+        └── partials
+        └── views
 ```
 
 ### Features
