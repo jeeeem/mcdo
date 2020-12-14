@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: black;
+  background-color: white; }
+
+.container {
+  margin: auto;
+  border: .5rem solid #111;
+  width: 30%;
+  margin-top: 15rem; }
+
+.box {
+  height: 50vh;
+  font-size: 1.6rem; }
+  .box-content {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center; }
+    .box-content > h3 {
+      font-size: 3rem;
+      margin-bottom: 5rem;
+      align-self: center; }
+    .box-content > label {
+      align-self: center; }
+
+input {
+  margin: .5rem;
+  display: block; }
+
+button {
+  margin: 2rem 0; }

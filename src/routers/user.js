@@ -4,7 +4,6 @@ const User = require('../models/User');
 
 const router = new express.Router();
 
-
 router.get('/users', async (req, res) => {
 
   try {
@@ -16,23 +15,22 @@ router.get('/users', async (req, res) => {
   }
 })
 
-router.post('/users/register', async (req, res) => {
+router.post('/register', async (req, res) => {
   const {id, username, password_hash} = req.body;
   try {
     const user = await User.create({id, username, password_hash})
 
-    return res.redirect('/users/login')
-    //return res.json(user);
+    return res.redirect('/login')
 
   } catch (e) {
     console.log(e);
 
     res.status(500).json(e)
-    return res.redirect('/users/register')
+    return res.redirect('/register')
   }
 })
 
-router.post('/users/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   const {username, password_hash} = req.body
   res.setHeader("Content-Type", "application/json");
   try {
@@ -48,13 +46,12 @@ router.post('/users/login', async (req, res) => {
       throw new Error('Unable to login')
     }
     return res.redirect('/home')
-    //return res.send(user)
+
   } catch (error) {
     console.log(error);
 
-    return res.redirect('/404')
-    //return res.status(404).json({error: 'Login Unsuccessfully'})
   }
 })
+
 
 module.exports = router;

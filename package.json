@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node -r dotenv/config ./src/index.js",
     "start:dev": "clear && nodemon -r dotenv/config ./src/index.js",
-    "compile:sass": "node-sass -w sass/main.scss dist/style.css"
+    "compile:sass": "node-sass -w ./src/sass/main.scss public/style.css"
   },
   "author": "Jim Angelo Beren",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },

@@ -1,4 +1,6 @@
 # Internal Content Tracker
+Guide:
+> https://www.rialtomarketing.com/push-messages-101-everything-you-need-to-know-about-using-push-messages-to-grow-your-small-business/ 
 
 ### Environment Variables
 
@@ -23,19 +25,6 @@ DB_PORT
         └── layouts
 ```
 
-### Packages Used
-- Dependencies
-  - sequelize
-  - express
-  - bcrypt
-  - body-parser
-  - jsonwebtoken
-  - dotenv
-  - express-handlebars
-- DevDependencies
-  - node-sass
-  - nodemon
-
 ### Features
 - User Management
 - Messages Tracker 
@@ -52,3 +41,7 @@ DB_PORT
 - Title
 - Message
 - Datetime (for when it is scheduled to send)
+
+### Questions
+1. Maximum character for push messages/notifications?
+  - 4 lines or 178 **characters**
