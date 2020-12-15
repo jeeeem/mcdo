@@ -6,8 +6,9 @@ const morgan = require('morgan');
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
 const userRouter = require('./routers/user');
-const port = process.env.DB_PORT || 8080;
+const messageRouter = require('./routers/message');
 
+const port = process.env.DB_PORT || 8080;
 const app = express();
 
 // Define paths
@@ -35,6 +36,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 // Routers
 app.use(express.json());
 app.use(userRouter);
+app.use(messageRouter);
 
 // Render Views
 app.get('/', async (req, res) => {

@@ -40,8 +40,10 @@ User.init(
   },
   {
     sequelize: connection,
-    modelName: 'users',
-    timestamps: false,
+    modelName: 'user',
+    tableName: 'user',
+    freezeTableName: true,
+    timestamps: false
   }
 );
 

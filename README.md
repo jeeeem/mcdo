@@ -10,6 +10,7 @@ DB_DATABASE
 DB_USER
 DB_PASS
 DB_PORT
+JWT_SECRET
 ```
 
 ### File Directory Structure

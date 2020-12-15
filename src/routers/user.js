@@ -36,7 +36,6 @@ router.post('/register', async (req, res) => {
 
 router.post('/login',  async (req, res) => {
   const { username, password_hash } = req.body
-  console.log(req.body);
 
   try {
     const user = await User.findOne({
@@ -48,7 +47,6 @@ router.post('/login',  async (req, res) => {
       expiresIn: 86400 
     });
 
-    console.log(token);
 
     if (!user) {
       throw new Error('Unable to login')
