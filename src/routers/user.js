@@ -47,7 +47,7 @@ router.post('/login',  async (req, res) => {
       expiresIn: 86400 
     });
 
-
+console.log(token);
     if (!user) {
       throw new Error('Unable to login')
     }

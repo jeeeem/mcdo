@@ -8,11 +8,14 @@ const connection = new Sequelize(
   {
     host: process.env.DB_HOST,
     timezone: '+08:00',
-    freezeTableName: true,
+    //freezeTableName: true,
+    //collate: 'utf8mb4_unicode_ci',
+    //useUTC:false,
     dialect: 'mysql',
     dialectOptions: {
       charset: 'utf8mb4',
-      collate: 'utf8mb4_unicode_ci',
+      dateStrings:true,
+      typeCast: true
     }
   }
 )

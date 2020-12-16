@@ -38,7 +38,6 @@ Message.init(
       type: DataTypes.STRING(25),
       },
     payload: {
-      //type: DataTypes.STRING(255),
       type: DataTypes.STRING(255),
     },
   },
@@ -46,7 +45,6 @@ Message.init(
     sequelize: connection,
     modelName: 'message',
     tableName: 'message',
-    freezeTableName: true,
     charset: 'utf8mb4',
     collate: 'utf8mb4_unicode_ci',
     timestamps: false
